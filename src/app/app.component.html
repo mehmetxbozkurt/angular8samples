@@ -1,0 +1,101 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }} ?
+  </h1>
+  <div app-inline-temp></div>
+</div>
+<app-test ></app-test>
+<br /><br />
+<app-class-binding></app-class-binding>
+<br><br>
+<app-property-binding></app-property-binding>
+<br /><br />
+{{getName()}}
+<br /><br />
+<div class="input-group">
+  <input type="text" class="form-control" #todoText >
+  <div class="input-group-append">
+    <button class="btn btn-primary" (click)="addItem(todoText.value); todoText.value='';">Ekle</button>
+  </div>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Decription</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of getItems2Table1(); let i=index;">
+      <td>{{i+1}}</td>
+      <td>{{item.description}}</td>
+      <td [ngSwitch]="item.action">
+        <span *ngSwitchCase="true">
+          Yes
+          <input type="checkbox" [(ngModel)]="item.action">
+        </span>
+        <span *ngSwitchCase="false">
+          No
+          <input type="checkbox" [(ngModel)]="item.action">
+        </span>
+        </td>
+
+    </tr>
+  </tbody>
+</table>
+<hr>
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Decription</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of getItems2Table2(); let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{item.description}}</td>
+        <td [ngSwitch]="item.action">
+          <span *ngSwitchCase="true">
+            Yes
+            <input type="checkbox" [(ngModel)]="item.action">
+          </span>
+          <span *ngSwitchCase="false">
+            No
+            <input type="checkbox" [(ngModel)]="item.action">
+          </span>
+          </td>
+          
+          <td >
+            <span *ngIf="item.action===true else degileGel">
+              evet
+            </span>
+            <ng-template #degileGel>
+            
+                değil
+              
+            </ng-template>  
+          </td> 
+
+
+      </tr>
+    </tbody>
+  </table>
+
+  <app-event-binding></app-event-binding>
+<br /><br />
+<h2>Two Way Binding:</h2>
+<app-two-way-binding></app-two-way-binding>
+<br /><br />
+<h2>Structural Directives:</h2>
+<app-structural-directives></app-structural-directives>
+<br /><br />
+
+<h2>Component Interaction:</h2>
+<app-component-interaction  (childEvent)="message=$event"  [parentData]="name"></app-component-interaction>
+<p>Message : {{message}}</p>
+
+<router-outlet></router-outlet>
