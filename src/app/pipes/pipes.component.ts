@@ -25,6 +25,11 @@ import { Component, OnInit } from '@angular/core';
   <h4>{{ 0.25 | currency }}</h4>
   <h4>{{ 0.25 | currency:'GBP' }}</h4>
   <h4>{{ 0.25 | currency:"TRY":"symbol"}}</h4>
+
+  <h4>{{ date }}</h4>
+  <h4>{{ date | date:'short'}}</h4>
+  <h4>{{ date | date:'shortDate'}}</h4>
+  <h4>{{ date | date:'shortTime'}}</h4>
   `,
   styles: []
 })
@@ -36,6 +41,7 @@ export class PipesComponent implements OnInit {
     firstName : 'Ömer',
     lastName : 'Bozkurt'
   }
+  public date = new Date();
   constructor() { }
 
   ngOnInit() {
